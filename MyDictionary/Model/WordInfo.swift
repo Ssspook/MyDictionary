@@ -1,24 +1,45 @@
 import Foundation
 
-struct WordInfoElement: Decodable {
-    let word: String
-    let phonetics: [Phonetic]
-    let meanings: [Meaning]
+// MARK: - WordInfo
+struct WordInfo: Codable {
+    let def: [Def]
 }
 
-struct Meaning: Codable {
-    let partOfSpeech: String
-    let definitions: [Definition]
+// MARK: - Def
+struct Def: Codable {
+    let text, ts: String // ts -- transcription
+    let pos: String?
+    let tr: [Tr]
 }
 
-struct Definition: Codable {
-    let definition, example: String
-    let synonyms: [String]?
-}
-
-struct Phonetic: Codable {
+// MARK: - Tr
+struct Tr: Codable {
     let text: String
-    let audio: String
+    let pos: String?
+    let gen: String?
+    let fr: Int // слоги
+    let syn: [Syn]?
+    let mean: [Mean]?
+    let ex: [Ex]?
+    let asp: String?
 }
 
-typealias WordInfo = [WordInfoElement]
+// MARK: - Ex
+struct Ex: Codable {
+    let text: String
+    let tr: [Mean]
+}
+
+// MARK: - Mean
+struct Mean: Codable {
+    let text: String
+}
+
+// MARK: - Syn
+struct Syn: Codable {
+    let text: String
+    let pos: String?
+    let fr: Int
+    let gen: String?
+}
+

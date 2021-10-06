@@ -1,27 +1,21 @@
 import Foundation
 
 class Word {
-    let word: String
+    private let name: String
+    private let partOfSpeach: String?
+    private var translations = [String]()
     
-    // var definitions = [String]()
-    // var synonyms = [String]()
-    var phoneticsText = [String]()
-    var phoneticsAudio = [String]()
-    
-    init?(wordInfo: WordInfoElement) {
-        word = wordInfo.word
+    init?(wordInfo: WordInfo) {
+        name = wordInfo.def[0].text
+        if let pos = wordInfo.def[0].pos { partOfSpeach = pos }
+        else { partOfSpeach = "" }
         
-        for phonetic in wordInfo.phonetics {
-            phoneticsText.append(phonetic.text)
-            phoneticsAudio.append(phonetic.audio)
+        for translationBlock in wordInfo.def[0].tr {
+            translations.append(translationBlock.text)
         }
-        
     }
+    public var Name: String { get { name } }
+    public var PartOfSpeach: String? { get { partOfSpeach } }
+    public var Translations: [String] { get { Array<String>(translations) } }
     
-    func printData() {
-        print(word)
-       // print(synonyms)
-        print(phoneticsText)
-        print(phoneticsAudio)
-    }
 }
