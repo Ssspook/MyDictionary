@@ -2,20 +2,29 @@ import Foundation
 
 class Word {
     private let name: String
-    private let partOfSpeach: String?
-    private var translations = [String]()
+    private let partOfSpeach: String
+    private var translations = [Tr]()
+    private var gender: String
     
     init?(wordInfo: WordInfo) {
         name = wordInfo.def[0].text
-        if let pos = wordInfo.def[0].pos { partOfSpeach = pos }
-        else { partOfSpeach = "" }
-        
-        for translationBlock in wordInfo.def[0].tr {
-            translations.append(translationBlock.text)
+        gender = wordInfo.def[0].tr[0].gen ?? ""
+        partOfSpeach = wordInfo.def[0].pos ?? ""
+       
+        for translation in wordInfo.def[0].tr {
+            translations.append(translation)
         }
+        
     }
+    
     public var Name: String { get { name } }
     public var PartOfSpeach: String? { get { partOfSpeach } }
-    public var Translations: [String] { get { Array<String>(translations) } }
+    public var Translations: [Tr] { get { Array<Tr>(translations) } }
+    public var Gender: String? { get { gender } }
+    
+    public func getTranslations(completionHandler: ([Tr]) -> ()) {
+      completionHandler(Translations)
+    }
+    
     
 }
