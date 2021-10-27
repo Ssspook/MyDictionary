@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302BEB1C271DB141002F9357 /* LanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302BEB1B271DB140002F9357 /* LanguageController.swift */; };
+		302BEB21271DCB2A002F9357 /* LanguageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302BEB20271DCB2A002F9357 /* LanguageDelegate.swift */; };
+		302BEB2C2722AC07002F9357 /* LanguageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302BEB2B2722AC07002F9357 /* LanguageInfo.swift */; };
+		302BEB2E2722BB17002F9357 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302BEB2D2722BB17002F9357 /* Languages.swift */; };
 		30BD09A32708CBE400B69CA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09A22708CBE400B69CA8 /* AppDelegate.swift */; };
 		30BD09A52708CBE400B69CA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09A42708CBE400B69CA8 /* SceneDelegate.swift */; };
-		30BD09A72708CBE400B69CA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09A62708CBE400B69CA8 /* ViewController.swift */; };
+		30BD09A72708CBE400B69CA8 /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09A62708CBE400B69CA8 /* DictionaryController.swift */; };
 		30BD09AA2708CBE400B69CA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BD09A82708CBE400B69CA8 /* Main.storyboard */; };
 		30BD09AC2708CBE600B69CA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BD09AB2708CBE600B69CA8 /* Assets.xcassets */; };
 		30BD09AF2708CBE600B69CA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BD09AD2708CBE600B69CA8 /* LaunchScreen.storyboard */; };
@@ -19,10 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		302BEB1B271DB140002F9357 /* LanguageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageController.swift; sourceTree = "<group>"; };
+		302BEB20271DCB2A002F9357 /* LanguageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDelegate.swift; sourceTree = "<group>"; };
+		302BEB2B2722AC07002F9357 /* LanguageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageInfo.swift; sourceTree = "<group>"; };
+		302BEB2D2722BB17002F9357 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		30BD099F2708CBE400B69CA8 /* MyDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BD09A22708CBE400B69CA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30BD09A42708CBE400B69CA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		30BD09A62708CBE400B69CA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30BD09A62708CBE400B69CA8 /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
 		30BD09A92708CBE400B69CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30BD09AB2708CBE600B69CA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30BD09AE2708CBE600B69CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +51,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		302BEB1D271DCAE3002F9357 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				302BEB20271DCB2A002F9357 /* LanguageDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		302BEB2827215553002F9357 /* LanguagesManagement */ = {
+			isa = PBXGroup;
+			children = (
+				302BEB2B2722AC07002F9357 /* LanguageInfo.swift */,
+				302BEB2D2722BB17002F9357 /* Languages.swift */,
+			);
+			path = LanguagesManagement;
+			sourceTree = "<group>";
+		};
 		30BD09962708CBE400B69CA8 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +87,8 @@
 		30BD09A12708CBE400B69CA8 /* MyDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				302BEB2827215553002F9357 /* LanguagesManagement */,
+				302BEB1D271DCAE3002F9357 /* Protocols */,
 				30BD09B92708CC9100B69CA8 /* Model */,
 				30BD09B82708CC6800B69CA8 /* View */,
 				30BD09B72708CC1E00B69CA8 /* SupportFiles */,
@@ -73,7 +100,8 @@
 		30BD09B62708CC0C00B69CA8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				30BD09A62708CBE400B69CA8 /* ViewController.swift */,
+				30BD09A62708CBE400B69CA8 /* DictionaryController.swift */,
+				302BEB1B271DB140002F9357 /* LanguageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,12 +207,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30BD09A72708CBE400B69CA8 /* ViewController.swift in Sources */,
+				302BEB21271DCB2A002F9357 /* LanguageDelegate.swift in Sources */,
+				302BEB1C271DB141002F9357 /* LanguageController.swift in Sources */,
+				30BD09A72708CBE400B69CA8 /* DictionaryController.swift in Sources */,
 				30BD09BB2708CCA500B69CA8 /* WordInfo.swift in Sources */,
 				30BD09A32708CBE400B69CA8 /* AppDelegate.swift in Sources */,
 				30BD09BD2708CEB900B69CA8 /* NetworkManagement.swift in Sources */,
+				302BEB2C2722AC07002F9357 /* LanguageInfo.swift in Sources */,
 				30BD09A52708CBE400B69CA8 /* SceneDelegate.swift in Sources */,
 				30BD09BF2708CF4200B69CA8 /* Word.swift in Sources */,
+				302BEB2E2722BB17002F9357 /* Languages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,12 +1,13 @@
 import Foundation
 
 class Word {
-    private let name: String
-    private let partOfSpeach: String
+    private var name = ""
+    private var partOfSpeach = ""
     private var translations = [Tr]()
-    private var gender: String
+    private var gender = ""
     
     init?(wordInfo: WordInfo) {
+        guard wordInfo.def.count != 0 else { return nil }
         name = wordInfo.def[0].text
         gender = wordInfo.def[0].tr[0].gen ?? ""
         partOfSpeach = wordInfo.def[0].pos ?? ""
@@ -17,10 +18,10 @@ class Word {
         
     }
     
-    public var Name: String { get { name } }
-    public var PartOfSpeach: String? { get { partOfSpeach } }
-    public var Translations: [Tr] { get { Array<Tr>(translations) } }
-    public var Gender: String? { get { gender } }
+    public var Name: String { name }
+    public var PartOfSpeach: String? { partOfSpeach }
+    public var Translations: [Tr] { Array<Tr>(translations) }
+    public var Gender: String? { gender }
     
     public func getTranslations(completionHandler: ([Tr]) -> ()) {
       completionHandler(Translations)

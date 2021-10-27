@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DictionaryController: UIViewController {
 
     @IBOutlet weak var translateTextField: UITextField!
     
@@ -21,7 +21,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var languageToTranslateFrom: UIButton!
+    
+    @IBOutlet weak var languageToTranslateTo: UIButton!
+
     private let networkManager = NetworManager()
+    
+    private var languages = Languages()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,10 @@ class ViewController: UIViewController {
         
         configureButtons()
         configureTapGesture()
+        
+        networkManager.getLanguagesDict { [weak self] gotLanguagesDict in
+            self?.languages.addLanguages(newLanguages: gotLanguagesDict)
+        }
     }
 
     private func configureButtons() {
@@ -41,11 +51,20 @@ class ViewController: UIViewController {
         genderLabel.font = UIFont.init(name: "Rockwell", size:  CGFloat(20.0))
         partOfSpeachLabel.font = UIFont.init(name: "Rockwell", size:  CGFloat(20.0))
         lookUpButton!.layer.cornerRadius = (lookUpButton?.frame.height)! / 2
+        
+        languageToTranslateFrom.sizeToFit()
+        languageToTranslateFrom.layer.cornerRadius = 7
+        languageToTranslateTo.sizeToFit()
+        languageToTranslateTo.layer.cornerRadius = 7
+
+        languageToTranslateFrom.setTitle("English", for: .normal)
+        languageToTranslateTo.setTitle("Russian", for: .normal)
     }
     
     private func configureTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DictionaryController.handleTap))
         view.addGestureRecognizer(tapGesture)
+        textView.addGestureRecognizer(tapGesture)
     }
 
     @objc func handleTap() {
@@ -59,7 +78,19 @@ class ViewController: UIViewController {
     private func updateView() {
         guard let valueToTranslate = getValueToTranslate() else { return }
         
-        networkManager.getWordInfo(word: valueToTranslate) { word in
+        let firstLangCode: String
+        let secondLangCode: String
+        
+        if let languageToTranslateFrom = languageToTranslateFrom.currentTitle,
+           let languageToTranslateTo = languageToTranslateTo.currentTitle {
+            
+            firstLangCode = languages.getLanguagesDict()[languageToTranslateFrom]!
+            secondLangCode = languages.getLanguagesDict()[languageToTranslateTo]!
+        } else {
+            return
+        }
+
+        networkManager.getWordInfo(word: valueToTranslate, languagePair: (firstLangCode, secondLangCode)) { word in
             DispatchQueue.main.async {
                 self.textView.text = nil
                 word.getTranslations { translations in
@@ -77,15 +108,21 @@ class ViewController: UIViewController {
                     }
                
                 }
-            
             self.mainTranslationLabel.text = word.Translations[0].text
             self.partOfSpeachLabel.text = word.PartOfSpeach
             self.genderLabel.text = word.Gender
             }
-        
         }
     }
     
+    @IBAction func goToLanguagePickFromCurrentLang(sender: UIButton) {
+        let langSelectionVC = storyboard?.instantiateViewController(withIdentifier: "LanguageController") as! LanguageController
+        langSelectionVC.addButton(buttonClicked: sender)
+        langSelectionVC.addLanguages(languages_: languages)
+        
+        langSelectionVC.languageDelegate = self
+        present(langSelectionVC, animated: true, completion: nil)
+    }
     
     @IBAction func lookUpButtonTouched(_ sender: Any) {
         updateView()
@@ -93,7 +130,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITextFieldDelegate, UITextViewDelegate {
+extension DictionaryController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -103,5 +140,11 @@ extension ViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         return false
+    }
+}
+
+extension DictionaryController: LanguageDelegate {
+    func didChooseLanguage(language: String, _ sender: UIButton?) {
+        sender?.setTitle("\(language)", for: .normal)
     }
 }

@@ -7,7 +7,8 @@ struct WordInfo: Codable {
 
 // MARK: - Def
 struct Def: Codable {
-    let text, ts: String // ts -- transcription
+    let text: String
+    let ts: String? // ts -- transcription
     let pos: String?
     let tr: [Tr]
 }
