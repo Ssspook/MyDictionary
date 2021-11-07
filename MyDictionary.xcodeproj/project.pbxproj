@@ -157,7 +157,6 @@
 				0ADB260C894C8A8EB05FBC3E /* Pods-MyDictionary.debug.xcconfig */,
 				8E3F4208475FADC7EAA86B89 /* Pods-MyDictionary.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

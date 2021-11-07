@@ -9,6 +9,7 @@ import UIKit
 
 class DictionaryController: UIViewController {
 
+    // MARK: Outlets
     @IBOutlet weak var translateTextField: UITextField!
     
     @IBOutlet weak var partOfSpeachLabel: UILabel!
@@ -25,10 +26,12 @@ class DictionaryController: UIViewController {
     
     @IBOutlet weak var languageToTranslateTo: UIButton!
 
+    // MARK: Properties
     private let networkManager = NetworManager()
     
     private var languages = Languages()
     
+    // MARK: View controller lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,11 +41,12 @@ class DictionaryController: UIViewController {
         configureButtons()
         configureTapGesture()
         
-        networkManager.getLanguagesDict { [weak self] gotLanguagesDict in
+        networkManager.fetchLanguagesDict { [weak self] gotLanguagesDict  in
             self?.languages.addLanguages(newLanguages: gotLanguagesDict)
         }
     }
 
+    
     private func configureButtons() {
         textView.font = UIFont.init(name: "Rockwell", size:  CGFloat(18.0))
         translateTextField.font = UIFont.init(name: "Rockwell", size:  CGFloat(18.0))
@@ -61,6 +65,7 @@ class DictionaryController: UIViewController {
         languageToTranslateTo.setTitle("Russian", for: .normal)
     }
     
+    // MARK: Taps handling
     private func configureTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DictionaryController.handleTap))
         view.addGestureRecognizer(tapGesture)
@@ -71,6 +76,7 @@ class DictionaryController: UIViewController {
         view.endEditing(true)
     }
     
+    //MARK: Word information display
     private func getValueToTranslate() -> String? {
         return translateTextField.text ?? nil
     }
@@ -90,7 +96,23 @@ class DictionaryController: UIViewController {
             return
         }
 
-        networkManager.getWordInfo(word: valueToTranslate, languagePair: (firstLangCode, secondLangCode)) { word in
+        networkManager.fetchWordInfo(word: valueToTranslate, languagePair: (firstLangCode, secondLangCode)) { (word, error) in
+            // (nil. nil) return type is for corrupted data
+            if error == nil && word == nil {
+                self.showAlert(with: "Error", message: "No such word in our database")
+                return
+            }
+            
+            if let error = error {
+                self.showAlert(with: "Error", message: error.localizedDescription)
+                return
+            }
+            
+            guard let word = word else {
+                self.showAlert(with: "Error", message: "Data is corrupted")
+                return
+            }
+
             DispatchQueue.main.async {
                 self.textView.text = nil
                 word.getTranslations { translations in
@@ -115,6 +137,18 @@ class DictionaryController: UIViewController {
         }
     }
     
+    // MARK: Alers
+    private func showAlert(with title: String, message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okButton)
+
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: IBActions
     @IBAction func goToLanguagePickFromCurrentLang(sender: UIButton) {
         let langSelectionVC = storyboard?.instantiateViewController(withIdentifier: "LanguageController") as! LanguageController
         langSelectionVC.addButton(buttonClicked: sender)
