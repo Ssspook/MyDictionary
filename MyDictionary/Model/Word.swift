@@ -26,6 +26,4 @@ class Word {
     public func getTranslations(completionHandler: ([Tr]) -> ()) {
       completionHandler(Translations)
     }
-    
-    
 }

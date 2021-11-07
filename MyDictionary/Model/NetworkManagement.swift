@@ -1,34 +1,48 @@
 import Foundation
+import Alamofire
 
 class NetworManager {
     private let key = "dict.1.1.20211006T155015Z.cb32fdc7c215e8e7.5908017f7e12552493958db228b3ee082cdfc2fd"
     private let languages = Languages()
     
-    func getWordInfo(word: String, languagePair: (String, String), completionHandler: @escaping (Word) -> ()) {
+    public func getWordInfo(word: String, languagePair: (String, String), completionHandler: @escaping (Word) -> ()) {
 
-        guard let myWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-              let url =
-                URL(string: "https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=\(key)&lang=\(languagePair.0)-\(languagePair.1)&text=\(myWord)&ui=\(languagePair.0)")
-              else { return }
-        print(languagePair)
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+//        guard let myWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+//              let url =
+//                URL(string: "https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=\(key)&lang=\(languagePair.0)-\(languagePair.1)&text=\(myWord)&ui=\(languagePair.0)")
+//              else { return }
+        guard let myWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         
-        let session = URLSession.shared
-        
-        session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                print(String(describing: error))
+        let requestString = "https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=\(key)&lang=\(languagePair.0)-\(languagePair.1)&text=\(myWord)&ui=\(languagePair.0)"
+       
+        AF.request(requestString, method: .get).validate().responseData { response in
+            guard let data = response.data else {
+                print(String(describing: response.error))
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            
             if let word = self.JSONparser(withData: data) {
                 completionHandler(word)
             }
-        }.resume()
+        }
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//
+//        let session = URLSession.shared
+//
+//        session.dataTask(with: request) { (data, response, error) in
+//            guard let data = data else {
+//                print(String(describing: error))
+//                return
+//            }
+//            print(String(data: data, encoding: .utf8)!)
+//            if let word = self.JSONparser(withData: data) {
+//                completionHandler(word)
+//            }
+//        }.resume()
     }
     
-    func getLanguagesDict(completionHandler: @escaping ([String: String]) -> ()) {
+    public func getLanguagesDict(completionHandler: @escaping ([String: String]) -> ()) {
         
         guard let url = URL(string: "https://dictionary.yandex.net/api/v1/dicservice.json/getLangs?key=\(key)") else { return }
         

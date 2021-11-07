@@ -20,9 +20,12 @@
 		30BD09BB2708CCA500B69CA8 /* WordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09BA2708CCA500B69CA8 /* WordInfo.swift */; };
 		30BD09BD2708CEB900B69CA8 /* NetworkManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09BC2708CEB900B69CA8 /* NetworkManagement.swift */; };
 		30BD09BF2708CF4200B69CA8 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD09BE2708CF4200B69CA8 /* Word.swift */; };
+		8914F686CA7DE06D963BF464 /* Pods_MyDictionary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27884F6AEFEF71A22E3E3581 /* Pods_MyDictionary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0ADB260C894C8A8EB05FBC3E /* Pods-MyDictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDictionary.debug.xcconfig"; path = "Target Support Files/Pods-MyDictionary/Pods-MyDictionary.debug.xcconfig"; sourceTree = "<group>"; };
+		27884F6AEFEF71A22E3E3581 /* Pods_MyDictionary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDictionary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		302BEB1B271DB140002F9357 /* LanguageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageController.swift; sourceTree = "<group>"; };
 		302BEB20271DCB2A002F9357 /* LanguageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDelegate.swift; sourceTree = "<group>"; };
 		302BEB2B2722AC07002F9357 /* LanguageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageInfo.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		30BD09BA2708CCA500B69CA8 /* WordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfo.swift; sourceTree = "<group>"; };
 		30BD09BC2708CEB900B69CA8 /* NetworkManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagement.swift; sourceTree = "<group>"; };
 		30BD09BE2708CF4200B69CA8 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		8E3F4208475FADC7EAA86B89 /* Pods-MyDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDictionary.release.xcconfig"; path = "Target Support Files/Pods-MyDictionary/Pods-MyDictionary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,12 +49,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8914F686CA7DE06D963BF464 /* Pods_MyDictionary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B9A7CB5B9E588A2223B4BB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27884F6AEFEF71A22E3E3581 /* Pods_MyDictionary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		302BEB1D271DCAE3002F9357 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +86,8 @@
 			children = (
 				30BD09A12708CBE400B69CA8 /* MyDictionary */,
 				30BD09A02708CBE400B69CA8 /* Products */,
+				98E6E1833194A479CD008227 /* Pods */,
+				1B9A7CB5B9E588A2223B4BB3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +151,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		98E6E1833194A479CD008227 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0ADB260C894C8A8EB05FBC3E /* Pods-MyDictionary.debug.xcconfig */,
+				8E3F4208475FADC7EAA86B89 /* Pods-MyDictionary.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30BD09B32708CBE600B69CA8 /* Build configuration list for PBXNativeTarget "MyDictionary" */;
 			buildPhases = (
+				C6CB04CCF6A05895BB7BC1DE /* [CP] Check Pods Manifest.lock */,
 				30BD099B2708CBE400B69CA8 /* Sources */,
 				30BD099C2708CBE400B69CA8 /* Frameworks */,
 				30BD099D2708CBE400B69CA8 /* Resources */,
+				03F4CC965302F65302E636FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +228,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03F4CC965302F65302E636FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyDictionary/Pods-MyDictionary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyDictionary/Pods-MyDictionary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyDictionary/Pods-MyDictionary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6CB04CCF6A05895BB7BC1DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyDictionary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		30BD099B2708CBE400B69CA8 /* Sources */ = {
@@ -360,6 +429,7 @@
 		};
 		30BD09B42708CBE600B69CA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0ADB260C894C8A8EB05FBC3E /* Pods-MyDictionary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -388,6 +458,7 @@
 		};
 		30BD09B52708CBE600B69CA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E3F4208475FADC7EAA86B89 /* Pods-MyDictionary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
