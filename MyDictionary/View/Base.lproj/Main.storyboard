@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1LA-GE-yXH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1LA-GE-yXH">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -97,21 +97,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srt-gv-wqG">
-                                <rect key="frame" x="118" y="299" width="202" height="59"/>
-                                <color key="backgroundColor" red="0.85003372628717788" green="1" blue="0.64405117545450064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="Piu-8m-mE6"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="202" id="wIR-hT-Zti"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Look Up">
-                                    <fontDescription key="titleFontDescription" name="PartyLetPlain" family="Party LET" pointSize="50"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="lookUpButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7F1-NT-JuF"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="04w-s2-NLR">
                                 <rect key="frame" x="5" y="97" width="404" height="31"/>
                                 <subviews>
@@ -137,13 +122,27 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srt-gv-wqG">
+                                <rect key="frame" x="92" y="298" width="202" height="59"/>
+                                <color key="backgroundColor" red="0.85003372628717788" green="1" blue="0.64405117545450064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Piu-8m-mE6"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Look Up">
+                                    <fontDescription key="titleFontDescription" name="PartyLetPlain" family="Party LET" pointSize="50"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="lookUpButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7F1-NT-JuF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WHL-GZ-SQx" secondAttribute="trailing" constant="57" id="1ea-7S-ZrX"/>
                             <constraint firstItem="MSs-3q-chj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2to-Nt-mWj"/>
-                            <constraint firstItem="srt-gv-wqG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="118" id="8rz-LA-fLA"/>
+                            <constraint firstItem="srt-gv-wqG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="92" id="8rz-LA-fLA"/>
                             <constraint firstAttribute="bottom" secondItem="qZa-U7-ktG" secondAttribute="bottom" id="91s-s9-fHf"/>
                             <constraint firstItem="04w-s2-NLR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="53" id="9hm-Nq-ggf"/>
                             <constraint firstItem="srt-gv-wqG" firstAttribute="top" secondItem="WHL-GZ-SQx" secondAttribute="bottom" constant="17.5" id="H14-yd-rRm"/>
@@ -162,7 +161,7 @@
                             <constraint firstItem="MSs-3q-chj" firstAttribute="top" secondItem="04w-s2-NLR" secondAttribute="bottom" constant="8" symbolic="YES" id="dcz-7w-5oO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H4u-eN-Lh8" secondAttribute="trailing" constant="57" id="fmV-Tm-sTh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="04w-s2-NLR" secondAttribute="trailing" constant="5" id="jHU-Bp-q1e"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="srt-gv-wqG" secondAttribute="trailing" constant="94" id="oek-9A-aWn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="srt-gv-wqG" secondAttribute="trailing" constant="122" id="oek-9A-aWn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CYs-mC-uNC"/>

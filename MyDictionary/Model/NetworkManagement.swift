@@ -7,8 +7,7 @@ class NetworManager {
     private let languages = Languages()
     
     // MARK: Get word information
-    public func fetchWordInfo(word: String, languagePair: (String, String), completionHandler: @escaping (Word?, Error?) -> ()
-        ) {
+    public func fetchWordInfo(word: String, languagePair: (String, String), completionHandler: @escaping (Word?, Error?) -> ()) {
         
         guard let myWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         
