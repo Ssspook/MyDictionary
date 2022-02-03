@@ -1,10 +1,15 @@
-# Dictonary app for ios
-### Language: 'Swift'
+# Dictonary app
+This app translates entered word from language on the left to language on the right. <br>
+Choose languages from pop up screen, enter the word and hit "Look up". <br>
+Yandex [`dictionary api`](https://yandex.com/dev/dictionary/) used
 
-- Alamofire required
+## Frameworks
+![Alamofire](https://img.shields.io/badge/-Alamofire-orange?style=for-the-badge)
+- Foundation
+- UIKit
 
-### Inforamtion
+## Architectire: `MVC`
 
-1) Yandex dictionary API used
-2) Choose languages from pop up screen, enter the word and hit "Look up"
+## Layout system: `Storyboards`
+
 3) Examples of word usage included
