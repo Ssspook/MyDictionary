@@ -5,8 +5,8 @@ Yandex [`dictionary api`](https://yandex.com/dev/dictionary/) used
 
 ## Frameworks
 ![Alamofire](https://img.shields.io/badge/-Alamofire-orange?style=for-the-badge)
-- Foundation
-- UIKit
+![Foundation](https://img.shields.io/badge/-Foundation-lightgrey?style=for-the-badge)
+![UIKit](https://img.shields.io/badge/-UIKit-red?style=for-the-badge)
 
 ## Architectire: `MVC`
 
