@@ -11,5 +11,4 @@ Yandex [`dictionary api`](https://yandex.com/dev/dictionary/) used
 ## Architectire: `MVC`
 
 ## Layout system: `Storyboards`
-
-3) Examples of word usage included
+`Examples of word usage included`
